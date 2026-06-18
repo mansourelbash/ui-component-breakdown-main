@@ -72,7 +72,7 @@ export const MainFeatures = {
       'Free 5G service',
       'Max it rewards',
       'Unlimited minutes & SMS to local networks',
-      'International minutes: 1,000 min to Ooredoo Palestine + 300 min call world',
+      'International minutes: 1,000 min to Orange Palestine + 300 min call world',
     ],
   },
 };

@@ -10,7 +10,7 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "Ma'ak 70 Line — Ooredoo Jordan",
+  title: "Ma'ak 70 Line — Orange Jordan",
   description:
     "Ma'ak 70 mobile line plan with 187.5 GB data, Free 5G, unlimited local minutes & SMS. Available on 24 or 12-month commitment plans.",
   generator: 'v0.app',

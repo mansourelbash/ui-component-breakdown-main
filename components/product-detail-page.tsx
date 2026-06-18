@@ -27,7 +27,7 @@ const mainFeatures = [
   "Free 5G service",
   "Max it rewards",
   "Unlimited minutes & SMS to local networks",
-  "International minutes: 1,000 min to Ooredoo Palestine + 300 min call world",
+  "International minutes: 1,000 min to Orange Palestine + 300 min call world",
 ]
 
 const extraFeatures = [
@@ -108,7 +108,7 @@ export function ProductDetailPage() {
       <header className="border-b border-[var(--color-neutral-300)] bg-white sticky top-0 z-10">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
           <span className="text-xl font-bold text-[var(--color-brand)] tracking-tight">
-            Ooredoo
+            Orange
           </span>
           <nav className="hidden md:flex items-center gap-6 text-sm text-[var(--color-neutral-700)]">
             <a href="#" className="hover:text-[var(--color-brand)] transition-colors">Personal</a>
@@ -117,7 +117,7 @@ export function ProductDetailPage() {
             <a href="#" className="hover:text-[var(--color-brand)] transition-colors">Support</a>
           </nav>
           <button className="text-sm font-semibold text-[var(--color-brand)] hover:underline">
-            My Ooredoo
+            My Orange
           </button>
         </div>
       </header>
@@ -237,7 +237,7 @@ export function ProductDetailPage() {
       {/* Footer */}
       <footer className="border-t border-[var(--color-neutral-300)] mt-16 py-8">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 text-center text-[13px] text-[var(--color-neutral-500)]">
-          &copy; 2026 Ooredoo Jordan. All rights reserved.
+          &copy; 2026 Orange Jordan. All rights reserved.
         </div>
       </footer>
     </div>
