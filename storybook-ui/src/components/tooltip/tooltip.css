@@ -1,0 +1,90 @@
+/* ─── Tooltip ────────────────────────────────────────────────────────── */
+
+.tooltip-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+/* Bubble */
+.tooltip-bubble {
+  position: absolute;
+  z-index: 1070;
+  pointer-events: none;
+  white-space: nowrap;
+  padding: var(--space-2) var(--space-3);
+  background-color: var(--color-neutral-900);
+  color: var(--color-white);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-md);
+  opacity: 0;
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+}
+.tooltip-bubble.is-visible { opacity: 1; }
+
+/* Arrow */
+.tooltip-bubble::after {
+  content: '';
+  position: absolute;
+  border: 5px solid transparent;
+}
+
+/* ── top ── */
+.tooltip-bubble--top {
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+}
+.tooltip-bubble--top::after {
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-top-color: var(--color-neutral-900);
+}
+
+/* ── bottom ── */
+.tooltip-bubble--bottom {
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+}
+.tooltip-bubble--bottom::after {
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-bottom-color: var(--color-neutral-900);
+}
+
+/* ── left ── */
+.tooltip-bubble--left {
+  right: calc(100% + 8px);
+  top: 50%;
+  transform: translateY(-50%);
+}
+.tooltip-bubble--left::after {
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  border-left-color: var(--color-neutral-900);
+}
+
+/* ── right ── */
+.tooltip-bubble--right {
+  left: calc(100% + 8px);
+  top: 50%;
+  transform: translateY(-50%);
+}
+.tooltip-bubble--right::after {
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  border-right-color: var(--color-neutral-900);
+}
+
+/* ── Brand orange variant ── */
+.tooltip-bubble--brand { background-color: var(--color-brand); }
+.tooltip-bubble--brand.tooltip-bubble--top::after    { border-top-color:    var(--color-brand); }
+.tooltip-bubble--brand.tooltip-bubble--bottom::after { border-bottom-color: var(--color-brand); }
+.tooltip-bubble--brand.tooltip-bubble--left::after   { border-left-color:   var(--color-brand); }
+.tooltip-bubble--brand.tooltip-bubble--right::after  { border-right-color:  var(--color-brand); }
