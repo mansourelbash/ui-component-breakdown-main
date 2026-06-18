@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ma'ak 70 Line — Ooredoo Jordan</title>
+
+  <!-- 1. Design tokens (must load first — all components depend on these) -->
+  <link rel="stylesheet" href="./src/styles/tokens.css" />
+  <link rel="stylesheet" href="./src/styles/base.css" />
+
+  <!-- 2. Component stylesheets -->
+  <link rel="stylesheet" href="./src/components/breadcrumb/breadcrumb.css" />
+  <link rel="stylesheet" href="./src/components/action-buttons/action-buttons.css" />
+  <link rel="stylesheet" href="./src/components/promo-banner/promo-banner.css" />
+  <link rel="stylesheet" href="./src/components/feature-list/feature-list.css" />
+  <link rel="stylesheet" href="./src/components/free-addons/free-addons.css" />
+  <link rel="stylesheet" href="./src/components/toggle-group/toggle-group.css" />
+  <link rel="stylesheet" href="./src/components/commitment-plan-card/commitment-plan-card.css" />
+  <link rel="stylesheet" href="./src/components/number-selector/number-selector.css" />
+  <link rel="stylesheet" href="./src/components/quantity-stepper/quantity-stepper.css" />
+  <link rel="stylesheet" href="./src/components/price-display/price-display.css" />
+  <link rel="stylesheet" href="./src/components/cta-buttons/cta-buttons.css" />
+
+  <!-- 3. Page-level layout styles -->
+  <style>
+    /* ── Header ───────────────────────────────────────────── */
+    .page-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: #fff;
+      border-bottom: 1px solid var(--color-neutral-300);
+    }
+    .page-header__inner {
+      max-width: 1152px;
+      margin: 0 auto;
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .page-header__logo {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--color-brand);
+      letter-spacing: -0.02em;
+      text-decoration: none;
+    }
+    .page-header__nav {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+    .page-header__nav a {
+      font-size: 14px;
+      color: var(--color-neutral-700);
+      text-decoration: none;
+      transition: color var(--transition-fast);
+    }
+    .page-header__nav a:hover { color: var(--color-brand); }
+    .page-header__my {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--color-brand);
+      text-decoration: none;
+    }
+    .page-header__my:hover { text-decoration: underline; }
+    @media (max-width: 768px) {
+      .page-header__nav { display: none; }
+    }
+
+    /* ── Main content ─────────────────────────────────────── */
+    .page-main {
+      max-width: 1152px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    /* ── Two-column product grid ──────────────────────────── */
+    .product-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+    @media (max-width: 1024px) {
+      .product-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── Columns ──────────────────────────────────────────── */
+    .col-left,
+    .col-right {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      min-width: 0;
+    }
+    .col-right { gap: 20px; }
+
+    /* ── Product image ────────────────────────────────────── */
+    .product-image {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      background: var(--color-neutral-100);
+      border-radius: var(--radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    .product-image__placeholder {
+      font-size: 80px;
+      line-height: 1;
+      user-select: none;
+    }
+
+    /* ── Section dividers ─────────────────────────────────── */
+    .divider {
+      border: none;
+      border-top: 1px solid var(--color-neutral-300);
+      margin: 0;
+    }
+    .section-bordered {
+      border-top: 1px solid var(--color-neutral-300);
+      padding-top: 24px;
+    }
+
+    /* ── Title row ────────────────────────────────────────── */
+    .product-eyebrow {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--color-brand);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 4px;
+    }
+    .product-title-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .product-title {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--color-neutral-900);
+      line-height: 1.2;
+      margin: 0;
+    }
+
+    /* ── Commitment plan label ────────────────────────────── */
+    .plan-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-neutral-500);
+      margin-bottom: 12px;
+    }
+
+    /* ── Quantity + price row ─────────────────────────────── */
+    .qty-price-row {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    /* ── Footer ───────────────────────────────────────────── */
+    .page-footer {
+      border-top: 1px solid var(--color-neutral-300);
+      margin-top: 64px;
+      padding: 32px 24px;
+    }
+    .page-footer__inner {
+      max-width: 1152px;
+      margin: 0 auto;
+      text-align: center;
+      font-size: 13px;
+      color: var(--color-neutral-500);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════ HEADER -->
+  <header class="page-header">
+    <div class="page-header__inner">
+      <a href="#" class="page-header__logo">Ooredoo</a>
+      <nav class="page-header__nav" aria-label="Main navigation">
+        <a href="#">Personal</a>
+        <a href="#">Business</a>
+        <a href="#">Devices</a>
+        <a href="#">Support</a>
+      </nav>
+      <a href="#" class="page-header__my">My Ooredoo</a>
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════════════════════════ MAIN -->
+  <main class="page-main">
+
+    <!-- ── Breadcrumb ──────────────────────────────────────── -->
+    <div style="margin-bottom: 20px;">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <ol class="breadcrumb__list">
+          <li class="breadcrumb__item">
+            <a href="#" class="breadcrumb__link">Personal</a>
+          </li>
+          <li class="breadcrumb__item">
+            <a href="#" class="breadcrumb__link">Mobile Line Plans</a>
+          </li>
+          <li class="breadcrumb__item">
+            <a href="#" class="breadcrumb__link">Ma3ak Lines</a>
+          </li>
+          <li class="breadcrumb__item breadcrumb__item--active" aria-current="page">
+            Ma'ak 80
+          </li>
+        </ol>
+      </nav>
+    </div>
+
+    <!-- ── Two-column product grid ───────────────────────── -->
+    <div class="product-grid">
+
+      <!-- ══════════════════ LEFT COLUMN ══════════════════ -->
+      <div class="col-left">
+
+        <!-- Product image -->
+        <div class="product-image" id="product-image-wrap">
+          <img
+            src="../public/images/maak-70.png"
+            alt="Ma'ak 70 mobile plan"
+            onerror="this.style.display='none'; document.getElementById('product-image-wrap').innerHTML='<span class=\'product-image__placeholder\'>📱</span>';"
+          />
+        </div>
+
+        <!-- Extra features -->
+        <div class="section-bordered">
+          <div class="feature-list">
+            <h3 class="feature-list__title">Extra Features</h3>
+            <ul class="feature-list__items" role="list">
+              <li class="feature-list__item">
+                <span class="feature-list__bullet" aria-hidden="true"></span>
+                <span class="feature-list__text">Data carry over to the next month</span>
+              </li>
+              <li class="feature-list__item">
+                <span class="feature-list__bullet" aria-hidden="true"></span>
+                <span class="feature-list__text">Missed Call Alert</span>
+              </li>
+              <li class="feature-list__item">
+                <span class="feature-list__bullet" aria-hidden="true"></span>
+                <span class="feature-list__text">Private Number</span>
+              </li>
+              <li class="feature-list__item">
+                <span class="feature-list__bullet" aria-hidden="true"></span>
+                <span class="feature-list__text">Discounts on a wide range of 5G handsets</span>
+              </li>
+              <li class="feature-list__item">
+                <span class="feature-list__bullet" aria-hidden="true"></span>
+                <span class="feature-list__text">300 minutes to receive calls while roaming</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Free Add-Ons -->
+        <div class="section-bordered">
+          <div class="addons">
+            <h3 class="addons__title">Free Add-Ons</h3>
+            <ul class="addons__list" role="list">
+              <li class="addon-item">
+                <div class="addon-item__logo-wrap">
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/TOD_MENA.svg/200px-TOD_MENA.svg.png"
+                    alt="TOD logo"
+                    class="addon-item__logo"
+                    onerror="this.outerHTML='<span class=\'addon-item__logo-text\'>TOD</span>'"
+                  />
+                </div>
+                <p class="addon-item__description">Watch the top leagues, tournaments, series and movies wherever you are on your mobile with TOD</p>
+              </li>
+              <li class="addon-item">
+                <div class="addon-item__logo-wrap">
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/en/thumb/d/d1/Anghami_Logo.png/200px-Anghami_Logo.png"
+                    alt="Anghami Plus logo"
+                    class="addon-item__logo"
+                    onerror="this.outerHTML='<span class=\'addon-item__logo-text\'>anghami+</span>'"
+                  />
+                </div>
+                <p class="addon-item__description">Stream the hottest hits, trending podcasts, and exclusive music experiences anytime, anywhere with Anghami on your mobile.</p>
+              </li>
+              <li class="addon-item">
+                <div class="addon-item__logo-wrap">
+                  <span class="addon-item__logo-text" style="color:#003087;">osn+</span>
+                </div>
+                <p class="addon-item__description">Catch the latest blockbusters, exclusive series, and Hollywood hits wherever you go with OSN+ on your mobile.</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </div><!-- /col-left -->
+
+      <!-- ══════════════════ RIGHT COLUMN ══════════════════ -->
+      <div class="col-right">
+
+        <!-- Title + Action Buttons -->
+        <div>
+          <p class="product-eyebrow">Mobile Line</p>
+          <div class="product-title-row">
+            <h1 class="product-title">Ma'ak 70 Line</h1>
+
+            <!-- ActionButtons component -->
+            <div class="action-buttons">
+              <button class="action-btn action-btn--compare" aria-label="Compare this product">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                </svg>
+                <span class="action-btn__label">Compare</span>
+              </button>
+              <button class="action-btn action-btn--share" aria-label="Share this product">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
+                  <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
+                  <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+                </svg>
+              </button>
+              <button class="action-btn action-btn--wishlist" aria-label="Add to wishlist" aria-pressed="false">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <hr class="divider" />
+        </div>
+
+        <!-- PromoBanner component -->
+        <div class="promo-banner" role="note">
+          <span class="promo-banner__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
+              <line x1="7" y1="7" x2="7.01" y2="7"/>
+            </svg>
+          </span>
+          <span class="promo-banner__text">Get Extra 25% GB exclusively from our eShop</span>
+        </div>
+
+        <!-- FeatureList component — Main Features -->
+        <div class="feature-list">
+          <h3 class="feature-list__title">Main Features</h3>
+          <ul class="feature-list__items" role="list">
+            <li class="feature-list__item">
+              <span class="feature-list__bullet" aria-hidden="true"></span>
+              <span class="feature-list__text">Main data bundle: 187.5 GB Internet (Including +25% GB)</span>
+            </li>
+            <li class="feature-list__item">
+              <span class="feature-list__bullet" aria-hidden="true"></span>
+              <span class="feature-list__text">Free 5G service</span>
+            </li>
+            <li class="feature-list__item">
+              <span class="feature-list__bullet" aria-hidden="true"></span>
+              <span class="feature-list__text">Max it rewards</span>
+            </li>
+            <li class="feature-list__item">
+              <span class="feature-list__bullet" aria-hidden="true"></span>
+              <span class="feature-list__text">Unlimited minutes &amp; SMS to local networks</span>
+            </li>
+            <li class="feature-list__item">
+              <span class="feature-list__bullet" aria-hidden="true"></span>
+              <span class="feature-list__text">International minutes: 1,000 min to Ooredoo Palestine + 300 min call world</span>
+            </li>
+          </ul>
+        </div>
+
+        <hr class="divider" />
+
+        <!-- ToggleGroup component — Line Type -->
+        <div class="toggle-group" data-toggle-group="line-type">
+          <p class="toggle-group__label">Choose Line Type</p>
+          <div class="toggle-group__options" role="radiogroup" aria-label="Choose Line Type">
+            <button class="toggle-btn" data-value="prepaid" role="radio" aria-checked="false">Prepaid</button>
+            <button class="toggle-btn toggle-btn--active" data-value="postpaid" role="radio" aria-checked="true">Postpaid</button>
+          </div>
+        </div>
+
+        <!-- CommitmentPlanCard component -->
+        <div>
+          <p class="plan-label">Commitment Plan</p>
+          <div class="plan-cards" id="plan-cards">
+
+            <!-- 24-month card — selected by default -->
+            <div class="plan-card plan-card--selected" tabindex="0" role="radio" aria-checked="true">
+              <input type="radio" class="plan-card__radio" name="commitment" value="24" checked aria-label="24 Months Commitment" />
+              <div class="plan-card__header">
+                <span class="plan-card__radio-icon" aria-hidden="true"></span>
+                <span class="plan-card__title">24 Months Commitment</span>
+              </div>
+              <div class="plan-card__row">
+                <span class="plan-card__key">First Month Payment</span>
+                <span class="plan-card__value plan-card__value--highlight">JD 20.42</span>
+              </div>
+              <p class="plan-card__sub-note">Including Tax</p>
+              <div class="plan-card__row">
+                <span class="plan-card__key">Monthly Fees</span>
+                <span class="plan-card__value">JD 17.04</span>
+              </div>
+              <div class="plan-card__row">
+                <span class="plan-card__key">Tax</span>
+                <span class="plan-card__value">JD 17.94</span>
+              </div>
+              <div class="plan-card__row">
+                <span class="plan-card__key">SIM Card</span>
+                <span class="plan-card__value">JD 3.02</span>
+              </div>
+              <div class="plan-card__footer">
+                <span class="plan-card__footer-key">Monthly Recurring Fees</span>
+                <div class="plan-card__monthly-price">
+                  <span class="plan-card__monthly-amount">JD 17.22</span>
+                  <span class="plan-card__monthly-suffix">/month<br>Including Tax</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 12-month card -->
+            <div class="plan-card" tabindex="0" role="radio" aria-checked="false">
+              <input type="radio" class="plan-card__radio" name="commitment" value="12" aria-label="12 Months Commitment" />
+              <div class="plan-card__header">
+                <span class="plan-card__radio-icon" aria-hidden="true"></span>
+                <span class="plan-card__title">12 Months Commitment</span>
+              </div>
+              <div class="plan-card__row">
+                <span class="plan-card__key">First Month Payment</span>
+                <span class="plan-card__value plan-card__value--highlight">JD 13.50</span>
+              </div>
+              <p class="plan-card__sub-note">Including Tax</p>
+              <div class="plan-card__row">
+                <span class="plan-card__key">Monthly Fees</span>
+                <span class="plan-card__value">JD 15.00</span>
+              </div>
+              <div class="plan-card__row">
+                <span class="plan-card__key">Tax</span>
+                <span class="plan-card__value">JD 15.00</span>
+              </div>
+              <div class="plan-card__row">
+                <span class="plan-card__key">SIM Card</span>
+                <span class="plan-card__value">JD 3.02</span>
+              </div>
+              <div class="plan-card__footer">
+                <span class="plan-card__footer-key">Monthly Recurring Fees</span>
+                <div class="plan-card__monthly-price">
+                  <span class="plan-card__monthly-amount">JD 15.00</span>
+                  <span class="plan-card__monthly-suffix">/month<br>Including Tax</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ToggleGroup component — SIM Type -->
+        <div class="toggle-group" data-toggle-group="sim-type">
+          <p class="toggle-group__label">Choose SIM Type</p>
+          <div class="toggle-group__options" role="radiogroup" aria-label="Choose SIM Type">
+            <button class="toggle-btn toggle-btn--active" data-value="sim" role="radio" aria-checked="true">SIM Card</button>
+            <button class="toggle-btn" data-value="esim" role="radio" aria-checked="false">eSIM</button>
+          </div>
+        </div>
+
+        <!-- NumberSelector component -->
+        <div class="number-selector">
+          <label class="number-selector__label" for="number-select">
+            Select Number
+            <span class="number-selector__required" aria-hidden="true">*</span>
+          </label>
+          <div class="number-selector__control">
+            <select id="number-select" class="number-selector__select" required aria-required="true">
+              <option value="+962 776295799" selected>+962 776295799</option>
+              <option value="+962 776295800">+962 776295800</option>
+              <option value="+962 776295801">+962 776295801</option>
+              <option value="+962 776295802">+962 776295802</option>
+              <option value="+962 776295803">+962 776295803</option>
+            </select>
+            <span class="number-selector__arrow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </span>
+          </div>
+        </div>
+
+        <!-- QuantityStepper + PriceDisplay row -->
+        <div class="qty-price-row">
+
+          <!-- QuantityStepper component -->
+          <div class="qty-stepper" id="qty-stepper" data-min="1" data-max="10">
+            <span class="qty-stepper__label">Quantity</span>
+            <div class="qty-stepper__control" role="group" aria-label="Quantity">
+              <button class="qty-stepper__btn qty-stepper__btn--dec" aria-label="Decrease quantity" disabled>−</button>
+              <input type="number" class="qty-stepper__input" value="1" min="1" max="10" aria-label="Quantity" />
+              <button class="qty-stepper__btn qty-stepper__btn--inc" aria-label="Increase quantity">+</button>
+            </div>
+          </div>
+
+          <!-- PriceDisplay component -->
+          <div class="price-display price-display--right">
+            <span class="price-display__currency">JD</span>
+            <span class="price-display__amount" id="price-amount">20.42</span>
+            <span class="price-display__note">Including Tax</span>
+          </div>
+
+        </div>
+
+        <!-- CTAButtons component -->
+        <div class="cta-buttons">
+          <button class="cta-btn cta-btn--primary" data-action="buy-now" aria-label="Buy Now">
+            BUY NOW
+          </button>
+          <button class="cta-btn cta-btn--secondary" data-action="add-to-cart" aria-label="Add to Cart">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16" aria-hidden="true">
+              <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+            </svg>
+            ADD TO CART
+          </button>
+        </div>
+
+      </div><!-- /col-right -->
+    </div><!-- /product-grid -->
+  </main>
+
+  <!-- ═══════════════════════════════════════════════ FOOTER -->
+  <footer class="page-footer">
+    <div class="page-footer__inner">
+      &copy; 2026 Ooredoo Jordan. All rights reserved.
+    </div>
+  </footer>
+
+  <!-- jQuery — must load before any component JS -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+  <!-- Component JS files (event-delegation pattern — safe to load after DOM) -->
+  <script src="./src/components/action-buttons/action-buttons.js"></script>
+  <script src="./src/components/toggle-group/toggle-group.js"></script>
+  <script src="./src/components/commitment-plan-card/commitment-plan-card.js"></script>
+  <script src="./src/components/quantity-stepper/quantity-stepper.js"></script>
+  <script src="./src/components/cta-buttons/cta-buttons.js"></script>
+
+  <!-- Page-level interactions: price sync + CTA handlers -->
+  <script>
+    $(function () {
+      'use strict';
+
+      // First-payment prices keyed by plan radio value
+      var PLAN_PRICES = { '24': 20.42, '12': 13.50 };
+
+      /**
+       * Recalculate and display: firstMonthPayment × quantity
+       */
+      function syncPrice() {
+        var plan = $('#plan-cards .plan-card--selected .plan-card__radio').val() || '24';
+        var qty  = parseInt($('#qty-stepper .qty-stepper__input').val(), 10) || 1;
+        var total = ((PLAN_PRICES[plan] || PLAN_PRICES['24']) * qty).toFixed(2);
+        $('#price-amount').text(total);
+      }
+
+      // Re-sync when user picks a different plan
+      $('#plan-cards').on('plan:change', syncPrice);
+
+      // Re-sync when quantity changes
+      $('#qty-stepper').on('qty:change', syncPrice);
+
+      // ── CTA: Buy Now ─────────────────────────────────────────────
+      $(document).on('cta:buy-now', '.cta-btn', function () {
+        var plan   = $('#plan-cards .plan-card--selected .plan-card__radio').val();
+        var qty    = parseInt($('#qty-stepper .qty-stepper__input').val(), 10) || 1;
+        var number = $('#number-select').val();
+        var price  = $('#price-amount').text();
+        alert(
+          'Proceeding to checkout!\n\n' +
+          'Plan:   ' + plan + ' months\n' +
+          'Qty:    ' + qty + '\n' +
+          'Number: ' + number + '\n' +
+          'Total:  JD ' + price
+        );
+      });
+
+      // ── CTA: Add to Cart ─────────────────────────────────────────
+      $(document).on('cta:add-to-cart', '.cta-btn', function () {
+        var plan  = $('#plan-cards .plan-card--selected .plan-card__radio').val();
+        var qty   = parseInt($('#qty-stepper .qty-stepper__input').val(), 10) || 1;
+        var price = $('#price-amount').text();
+
+        // Show loading state via the component's programmatic API
+        window.UI.CTAButtons.setLoading('.cta-btn[data-action="add-to-cart"]', true, 'Adding…');
+
+        // Simulate an async request, then restore
+        setTimeout(function () {
+          window.UI.CTAButtons.setLoading('.cta-btn[data-action="add-to-cart"]', false);
+          alert(
+            'Added to cart!\n\n' +
+            'Plan:  ' + plan + ' months\n' +
+            'Qty:   ' + qty + '\n' +
+            'Total: JD ' + price
+          );
+        }, 1200);
+      });
+    });
+  </script>
+
+</body>
+</html>
