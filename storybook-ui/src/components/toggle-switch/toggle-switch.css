@@ -1,0 +1,51 @@
+/* ─── Toggle Switch ──────────────────────────────────────────────────── */
+.toggle-switch {
+  display: inline-flex; align-items: center; gap: var(--space-3);
+  cursor: pointer;
+}
+.toggle-switch--disabled { opacity: .45; cursor: not-allowed; pointer-events: none; }
+
+/* Hidden native checkbox */
+.toggle-switch__input { position: absolute; opacity: 0; width: 0; height: 0; pointer-events: none; }
+
+/* Track */
+.toggle-switch__track {
+  position: relative; flex-shrink: 0;
+  width: 44px; height: 24px;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-neutral-300);
+  transition: background-color var(--transition-base);
+}
+.toggle-switch__input:checked ~ .toggle-switch__track { background-color: var(--color-brand); }
+
+/* Focus ring */
+.toggle-switch__input:focus-visible ~ .toggle-switch__track {
+  outline: 2px solid var(--color-brand); outline-offset: 2px;
+}
+
+/* Thumb */
+.toggle-switch__thumb {
+  position: absolute; top: 3px; left: 3px;
+  width: 18px; height: 18px;
+  border-radius: 50%; background-color: #fff;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-base);
+}
+.toggle-switch__input:checked ~ .toggle-switch__track .toggle-switch__thumb { transform: translateX(20px); }
+
+/* Size: large */
+.toggle-switch--lg .toggle-switch__track { width: 52px; height: 28px; }
+.toggle-switch--lg .toggle-switch__thumb { width: 22px; height: 22px; }
+.toggle-switch--lg .toggle-switch__input:checked ~ .toggle-switch__track .toggle-switch__thumb { transform: translateX(24px); }
+
+/* Size: small */
+.toggle-switch--sm .toggle-switch__track { width: 36px; height: 20px; }
+.toggle-switch--sm .toggle-switch__thumb { top: 2px; left: 2px; width: 16px; height: 16px; }
+.toggle-switch--sm .toggle-switch__input:checked ~ .toggle-switch__track .toggle-switch__thumb { transform: translateX(16px); }
+
+/* Label text */
+.toggle-switch__label { font-size: var(--font-size-base); font-weight: var(--font-weight-medium); color: var(--color-text-primary); line-height: 1.4; }
+.toggle-switch__label-sub { display: block; font-size: var(--font-size-sm); color: var(--color-text-secondary); font-weight: var(--font-weight-regular); }
+
+/* Label left (track on right) */
+.toggle-switch--label-left { flex-direction: row-reverse; }

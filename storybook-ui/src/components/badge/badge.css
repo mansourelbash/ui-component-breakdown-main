@@ -1,0 +1,46 @@
+/* ─── Badge ──────────────────────────────────────────────────────────── */
+.badge {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 2px var(--space-2);
+  border-radius: var(--radius-pill);
+  font-size: var(--font-size-xs); font-weight: var(--font-weight-bold);
+  letter-spacing: .03em; white-space: nowrap; line-height: 1.4;
+  vertical-align: middle; border: 1px solid transparent;
+}
+
+/* Color variants */
+.badge--brand        { background: var(--color-brand);       color: #fff; border-color: var(--color-brand); }
+.badge--brand-light  { background: var(--color-brand-light); color: var(--color-brand); border-color: var(--color-brand-border); }
+.badge--success      { background: #DCFCE7; color: #16A34A; border-color: #BBF7D0; }
+.badge--error        { background: #FEE2E2; color: #DC2626; border-color: #FECACA; }
+.badge--warning      { background: #FEF9C3; color: #CA8A04; border-color: #FDE68A; }
+.badge--info         { background: #DBEAFE; color: #2563EB; border-color: #BFDBFE; }
+.badge--neutral      { background: var(--color-neutral-200); color: var(--color-neutral-700); border-color: var(--color-neutral-300); }
+
+/* Outline variants */
+.badge--outline              { background: transparent; }
+.badge--outline.badge--brand { color: var(--color-brand); border-color: var(--color-brand); }
+.badge--outline.badge--success  { color: #16A34A; border-color: #16A34A; }
+.badge--outline.badge--error    { color: #DC2626; border-color: #DC2626; }
+.badge--outline.badge--neutral  { color: var(--color-neutral-600); border-color: var(--color-neutral-400); }
+
+/* Sizes */
+.badge--sm { font-size: 10px;                      padding: 1px 6px; }
+.badge--lg { font-size: var(--font-size-sm);        padding: 4px var(--space-3); }
+
+/* Dot indicator */
+.badge__dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background-color: currentColor; flex-shrink: 0;
+}
+
+/* Counter pill — for notification bubbles */
+.badge--counter {
+  min-width: 18px; height: 18px; border-radius: 9999px;
+  padding: 0 5px;
+  font-size: 11px;
+  display: inline-flex; align-items: center; justify-content: center;
+}
+
+/* Remove default gap when used as counter */
+.badge--counter .badge__dot { display: none; }

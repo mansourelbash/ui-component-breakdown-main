@@ -1,0 +1,71 @@
+/* ─── Range Slider ───────────────────────────────────────────────────── */
+.range-slider { display: flex; flex-direction: column; gap: var(--space-3); }
+.range-slider__label {
+  font-size: var(--font-size-xs); font-weight: var(--font-weight-bold);
+  letter-spacing: .08em; text-transform: uppercase; color: var(--color-text-label);
+}
+
+/* Row: number | track | number */
+.range-slider__body { display: flex; align-items: center; gap: var(--space-3); }
+
+/* Number inputs */
+.range-slider__number {
+  width: 72px; padding: 8px var(--space-3);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md); background: var(--color-white);
+  font-size: var(--font-size-sm); font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary); text-align: center;
+  transition: border-color var(--transition-fast); outline: none;
+  -moz-appearance: textfield; appearance: textfield;
+}
+.range-slider__number::-webkit-outer-spin-button,
+.range-slider__number::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.range-slider__number:focus { border-color: var(--color-brand); box-shadow: 0 0 0 3px rgba(244,121,32,.15); }
+
+/* Track area */
+.range-slider__track-wrap {
+  flex: 1; position: relative; height: 20px; display: flex; align-items: center;
+}
+.range-slider__track {
+  position: absolute; width: 100%; height: 4px;
+  background: var(--color-neutral-200); border-radius: var(--radius-pill);
+}
+.range-slider__fill {
+  position: absolute; height: 4px; background: var(--color-brand);
+  border-radius: var(--radius-pill);
+}
+
+/* Range inputs (stacked) */
+.range-slider__range {
+  position: absolute; width: 100%; height: 4px;
+  -webkit-appearance: none; appearance: none;
+  background: transparent; pointer-events: none; outline: none;
+}
+.range-slider__range--min { z-index: 2; }
+.range-slider__range--max { z-index: 1; }
+.range-slider__range--max.is-top { z-index: 3; }
+
+/* Thumb — Webkit */
+.range-slider__range::-webkit-slider-thumb {
+  -webkit-appearance: none; appearance: none;
+  width: 18px; height: 18px; border-radius: 50%;
+  background: var(--color-brand); border: 2.5px solid #fff;
+  box-shadow: var(--shadow-sm); cursor: pointer; pointer-events: all;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+.range-slider__range::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+  box-shadow: var(--shadow-md), 0 0 0 3px rgba(244,121,32,.2);
+}
+/* Thumb — Firefox */
+.range-slider__range::-moz-range-thumb {
+  width: 18px; height: 18px; border-radius: 50%;
+  background: var(--color-brand); border: 2.5px solid #fff;
+  box-shadow: var(--shadow-sm); cursor: pointer; pointer-events: all;
+}
+
+/* Values hint below */
+.range-slider__hint {
+  display: flex; justify-content: space-between;
+  font-size: var(--font-size-xs); color: var(--color-text-secondary);
+}
