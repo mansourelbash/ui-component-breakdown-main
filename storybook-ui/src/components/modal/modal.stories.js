@@ -74,7 +74,7 @@ export const Small = {
 export const Large = {
   args: {
     title: 'Plan Details',
-    body: "<p>The Ma'ak 70 plan includes 187.5 GB data (+25% bonus), free 5G, unlimited local minutes &amp; SMS, 1,000 min to Ooredoo Palestine, and free TOD, Anghami, and OSN+ add-ons.</p><br/><p>Commitment period: 24 or 12 months. Early termination fees apply.</p>",
+    body: "<p>The Ma'ak 70 plan includes 187.5 GB data (+25% bonus), free 5G, unlimited local minutes &amp; SMS, 1,000 min to Orange Palestine, and free TOD, Anghami, and OSN+ add-ons.</p><br/><p>Commitment period: 24 or 12 months. Early termination fees apply.</p>",
     size: 'lg', variant: 'default', showFooter: true, staticBackdrop: false,
     primaryLabel: 'Subscribe Now', secondaryLabel: 'Go Back',
   },

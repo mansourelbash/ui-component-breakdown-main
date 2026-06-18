@@ -63,7 +63,7 @@ export const Right = {
 
 /** Brand orange variant */
 export const BrandOrange = {
-  args: { text: 'Ooredoo Exclusive Offer!', placement: 'top', variant: 'brand', triggerLabel: 'Exclusive Deal', triggerType: 'button' },
+  args: { text: 'Orange Exclusive Offer!', placement: 'top', variant: 'brand', triggerLabel: 'Exclusive Deal', triggerType: 'button' },
 };
 
 /** On inline text */

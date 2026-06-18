@@ -19,7 +19,7 @@ function renderNavbar({ variant, sticky, brandText, showCTA, links }) {
   ).join('');
   const ctaHtml = showCTA
     ? `<a href="#" class="navbar__cta navbar__cta--outline">Login</a>
-       <a href="#" class="navbar__cta navbar__cta--primary">My Ooredoo</a>`
+       <a href="#" class="navbar__cta navbar__cta--primary">My Orange</a>`
     : '';
 
   const navbar = `
@@ -53,28 +53,28 @@ export default {
     variant:   { control: 'radio',   options: ['light', 'dark', 'brand'], description: 'Visual theme.' },
     sticky:    { control: 'boolean', description: 'Stick navbar to top of viewport on scroll.' },
     brandText: { control: 'text',    description: 'Brand / logo text.' },
-    showCTA:   { control: 'boolean', description: 'Show Login + My Ooredoo CTA buttons.' },
+    showCTA:   { control: 'boolean', description: 'Show Login + My Orange CTA buttons.' },
     links:     { control: 'object',  description: 'Nav link array: [{label, active}].' },
   },
 };
 
-export const Light = { args: { variant: 'light', sticky: false, brandText: 'Ooredoo', showCTA: true, links: LINKS } };
-export const Dark  = { args: { variant: 'dark',  sticky: false, brandText: 'Ooredoo', showCTA: true, links: LINKS } };
-export const Brand = { args: { variant: 'brand', sticky: false, brandText: 'Ooredoo', showCTA: true, links: LINKS } };
+export const Light = { args: { variant: 'light', sticky: false, brandText: 'Orange', showCTA: true, links: LINKS } };
+export const Dark  = { args: { variant: 'dark',  sticky: false, brandText: 'Orange', showCTA: true, links: LINKS } };
+export const Brand = { args: { variant: 'brand', sticky: false, brandText: 'Orange', showCTA: true, links: LINKS } };
 
 export const StickyLight = {
   name: 'Sticky — Light',
-  args: { variant: 'light', sticky: true, brandText: 'Ooredoo', showCTA: true, links: LINKS },
+  args: { variant: 'light', sticky: true, brandText: 'Orange', showCTA: true, links: LINKS },
 };
 export const StickyDark = {
   name: 'Sticky — Dark',
-  args: { variant: 'dark', sticky: true, brandText: 'Ooredoo', showCTA: true, links: LINKS },
+  args: { variant: 'dark', sticky: true, brandText: 'Orange', showCTA: true, links: LINKS },
 };
 export const NoCTA = {
   name: 'No CTA Buttons',
-  args: { variant: 'light', sticky: false, brandText: 'Ooredoo', showCTA: false, links: LINKS },
+  args: { variant: 'light', sticky: false, brandText: 'Orange', showCTA: false, links: LINKS },
 };
 export const FewLinks = {
   name: 'Two Links Only',
-  args: { variant: 'light', sticky: false, brandText: 'Ooredoo', showCTA: true, links: LINKS.slice(0, 2) },
+  args: { variant: 'light', sticky: false, brandText: 'Orange', showCTA: true, links: LINKS.slice(0, 2) },
 };

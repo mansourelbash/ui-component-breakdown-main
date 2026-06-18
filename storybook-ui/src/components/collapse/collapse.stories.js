@@ -29,12 +29,12 @@ function renderCollapse({ items, accordion }) {
 const FAQ = [
   {
     title: "What is included in the Ma'ak 70 plan?",
-    body:  "The Ma'ak 70 plan includes 187.5 GB of data (with +25% bonus), free 5G service, unlimited local minutes and SMS, and 1,000 international minutes to Ooredoo Palestine.",
+    body:  "The Ma'ak 70 plan includes 187.5 GB of data (with +25% bonus), free 5G service, unlimited local minutes and SMS, and 1,000 international minutes to Orange Palestine.",
     open:  true,
   },
   {
     title: 'Can I change my commitment period later?',
-    body:  'You can upgrade your commitment plan after your current period ends. Visit any Ooredoo store or contact customer support for assistance.',
+    body:  'You can upgrade your commitment plan after your current period ends. Visit any Orange store or contact customer support for assistance.',
     open:  false,
   },
   {
@@ -44,7 +44,7 @@ const FAQ = [
   },
   {
     title: 'How do I transfer my existing number?',
-    body:  'You can port your number by selecting an available number during checkout or by visiting an Ooredoo Jordan branch with a valid ID and your existing SIM card.',
+    body:  'You can port your number by selecting an available number during checkout or by visiting an Orange Jordan branch with a valid ID and your existing SIM card.',
     open:  false,
   },
 ];

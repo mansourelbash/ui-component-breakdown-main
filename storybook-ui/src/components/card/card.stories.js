@@ -75,6 +75,6 @@ export const NoTags        = { args: { ...BASE, tags: [] } };
 export const LongText      = {
   args: {
     ...BASE,
-    text: 'The Ma\'ak 70 plan gives you 187.5 GB of high-speed data including a +25% bonus data bundle, free 5G service, unlimited local minutes and SMS, plus 1,000 international minutes to Ooredoo Palestine.',
+    text: 'The Ma\'ak 70 plan gives you 187.5 GB of high-speed data including a +25% bonus data bundle, free 5G service, unlimited local minutes and SMS, plus 1,000 international minutes to Orange Palestine.',
   },
 };
