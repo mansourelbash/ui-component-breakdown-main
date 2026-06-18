@@ -1,0 +1,68 @@
+/* ─── ActionButtons ──────────────────────────────────────────────────── */
+
+.action-buttons {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background-color: var(--color-white);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition:
+    border-color var(--transition-fast),
+    color var(--transition-fast),
+    background-color var(--transition-fast);
+  white-space: nowrap;
+}
+
+.action-btn:hover:not(.action-btn--active) {
+  border-color: var(--color-brand);
+  color: var(--color-brand);
+}
+
+.action-btn:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 2px;
+}
+
+/* ── Compare button ── */
+.action-btn--compare {
+  padding: 8px var(--space-4);
+}
+
+/* ── Share button ── */
+.action-btn--share {
+  padding: 8px var(--space-3);
+}
+
+/* ── Wishlist heart button — circular ── */
+.action-btn--wishlist {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.action-btn--wishlist.action-btn--active {
+  background-color: var(--color-brand);
+  border-color: var(--color-brand);
+  color: var(--color-white);
+}
+
+/* ── Icon sizing inside buttons ── */
+.action-btn svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}

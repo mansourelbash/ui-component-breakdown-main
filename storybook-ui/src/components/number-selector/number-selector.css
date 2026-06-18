@@ -1,0 +1,74 @@
+/* ─── NumberSelector ─────────────────────────────────────────────────── */
+
+.number-selector {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.number-selector__label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+.number-selector__required {
+  color: var(--color-brand);
+  font-size: var(--font-size-base);
+  line-height: 1;
+}
+
+.number-selector__control {
+  position: relative;
+}
+
+.number-selector__select {
+  width: 100%;
+  padding: 12px var(--space-10) 12px var(--space-4);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-white);
+  font-size: var(--font-size-base);
+  color: var(--color-text-primary);
+  line-height: var(--line-height-base);
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.number-selector__select:hover {
+  border-color: var(--color-neutral-500);
+}
+
+.number-selector__select:focus {
+  outline: none;
+  border-color: var(--color-brand);
+  box-shadow: 0 0 0 3px rgba(244, 121, 32, 0.15);
+}
+
+.number-selector__select:disabled {
+  background-color: var(--color-neutral-100);
+  color: var(--color-text-secondary);
+  cursor: not-allowed;
+}
+
+/* Custom chevron arrow */
+.number-selector__arrow {
+  position: absolute;
+  right: var(--space-4);
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: var(--color-text-secondary);
+  display: flex;
+  align-items: center;
+}
+
+.number-selector__arrow svg {
+  width: 16px;
+  height: 16px;
+}

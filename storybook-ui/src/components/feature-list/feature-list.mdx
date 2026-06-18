@@ -1,0 +1,87 @@
+import { Meta, Canvas, Controls, ArgTypes } from '@storybook/blocks';
+import * as FeatureListStories from './feature-list.stories';
+
+<Meta of={FeatureListStories} />
+
+# FeatureList
+
+A labelled bullet-point list used to communicate product features, benefits, or included services. The bullet dots use the brand orange (`--color-brand`). The same component is reused for both "Main Features" and "Extra Features" sections on the product page.
+
+**No JavaScript required** — this is a static HTML/CSS component.
+
+---
+
+## Usage in a plain HTML page
+
+```html
+<link rel="stylesheet" href="path/to/tokens.css" />
+<link rel="stylesheet" href="path/to/feature-list.css" />
+
+<div class="feature-list">
+  <h3 class="feature-list__title">Main Features</h3>
+  <ul class="feature-list__items" role="list">
+    <li class="feature-list__item">
+      <span class="feature-list__bullet" aria-hidden="true"></span>
+      <span class="feature-list__text">Main data bundle: 187.5 GB Internet (Including +25% GB)</span>
+    </li>
+    <li class="feature-list__item">
+      <span class="feature-list__bullet" aria-hidden="true"></span>
+      <span class="feature-list__text">Free 5G service</span>
+    </li>
+    <!-- more items -->
+  </ul>
+</div>
+```
+
+### Compact variant
+
+```html
+<div class="feature-list feature-list--compact">
+  ...
+</div>
+```
+
+### No title
+
+Add the `.feature-list--no-title` modifier or simply omit the `<h3>`:
+
+```html
+<div class="feature-list">
+  <ul class="feature-list__items" role="list">
+    <!-- items -->
+  </ul>
+</div>
+```
+
+---
+
+## BEM classes reference
+
+| Class | Description |
+|---|---|
+| `.feature-list` | Root wrapper |
+| `.feature-list--compact` | Smaller item gap and font size |
+| `.feature-list--no-title` | Hides the title element |
+| `.feature-list__title` | Uppercase section heading |
+| `.feature-list__items` | `<ul>` containing list items |
+| `.feature-list__item` | Each `<li>` row |
+| `.feature-list__bullet` | Orange dot |
+| `.feature-list__text` | Item text |
+
+---
+
+## Main Features
+
+<Canvas of={FeatureListStories.MainFeatures} />
+<Controls of={FeatureListStories.MainFeatures} />
+
+## Variants
+
+<Canvas of={FeatureListStories.ExtraFeatures} />
+<Canvas of={FeatureListStories.Compact} />
+<Canvas of={FeatureListStories.NoTitle} />
+<Canvas of={FeatureListStories.SingleItem} />
+
+## Argument reference
+
+<ArgTypes of={FeatureListStories} />

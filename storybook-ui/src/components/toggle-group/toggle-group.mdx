@@ -1,0 +1,92 @@
+import { Meta, Canvas, Controls, ArgTypes } from '@storybook/blocks';
+import * as ToggleGroupStories from './toggle-group.stories.js';
+
+<Meta of={ToggleGroupStories} />
+
+# ToggleGroup
+
+A radio-style button group where exactly one option is active at a time. Used on the product detail page for "Choose Line Type" and "Choose SIM Type". jQuery manages active-class toggling and fires a custom `toggle:change` event that consuming pages can listen to.
+
+## Usage
+
+```html
+<link rel="stylesheet" href="tokens.css" />
+<link rel="stylesheet" href="toggle-group.css" />
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="toggle-group.js"></script>
+
+<div class="toggle-group" data-toggle-group="line-type">
+  <p class="toggle-group__label">Choose Line Type</p>
+  <div class="toggle-group__options" role="radiogroup" aria-label="Choose Line Type">
+    <button class="toggle-btn" data-value="prepaid" role="radio" aria-checked="false">Prepaid</button>
+    <button class="toggle-btn toggle-btn--active" data-value="postpaid" role="radio" aria-checked="true">Postpaid</button>
+  </div>
+</div>
+```
+
+### Listening to changes
+
+```js
+// jQuery custom event
+$('[data-toggle-group="line-type"]').on('toggle:change', function (e, groupName, value) {
+  console.log(groupName, '→', value); // "line-type → prepaid"
+});
+
+// Programmatic API
+window.UI.ToggleGroup.setValue('[data-toggle-group="line-type"]', 'prepaid');
+var current = window.UI.ToggleGroup.getValue('[data-toggle-group="line-type"]');
+```
+
+---
+
+## Default — Line Type, Postpaid Selected
+
+<Canvas of={ToggleGroupStories.LineTypePostpaid} />
+<Controls of={ToggleGroupStories.LineTypePostpaid} />
+
+---
+
+## Variants
+
+### Line Type — Prepaid Selected
+
+<Canvas of={ToggleGroupStories.LineTypePrepaid} />
+
+### SIM Type — SIM Card Selected
+
+<Canvas of={ToggleGroupStories.SimTypeSIMCard} />
+
+### SIM Type — eSIM Selected
+
+<Canvas of={ToggleGroupStories.SimTypeESIM} />
+
+### With Radio Dot Indicators
+
+<Canvas of={ToggleGroupStories.WithDotIndicators} />
+
+### Three Options
+
+<Canvas of={ToggleGroupStories.ThreeOptions} />
+
+### Disabled
+
+<Canvas of={ToggleGroupStories.Disabled} />
+
+---
+
+## ArgTypes
+
+<ArgTypes of={ToggleGroupStories} />
+
+---
+
+## Design Tokens Used
+
+| Token | Purpose |
+|---|---|
+| `--color-brand` | Active button background + border |
+| `--color-white` | Active button text |
+| `--color-border` | Inactive button border |
+| `--color-text-primary` | Inactive button text |
+| `--radius-pill` | Fully rounded button shape |
+| `--transition-base` | Hover / active state transition |

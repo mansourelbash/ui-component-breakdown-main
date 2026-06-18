@@ -1,0 +1,93 @@
+/* ─── CTAButtons ─────────────────────────────────────────────────────── */
+
+.cta-buttons {
+  display: flex;
+  gap: var(--space-3);
+}
+
+.cta-btn {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: 15px var(--space-5);
+  border-radius: var(--radius-pill);
+  border: none;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    opacity var(--transition-fast),
+    background-color var(--transition-fast),
+    transform var(--transition-fast);
+  user-select: none;
+}
+
+.cta-btn:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.cta-btn:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 3px;
+}
+
+/* ── Primary: dark "Buy Now" ── */
+.cta-btn--primary {
+  background-color: var(--color-neutral-900);
+  color: var(--color-white);
+}
+
+.cta-btn--primary:hover:not(:disabled) {
+  background-color: var(--color-neutral-800);
+}
+
+/* ── Secondary: orange "Add to Cart" ── */
+.cta-btn--secondary {
+  background-color: var(--color-brand);
+  color: var(--color-white);
+}
+
+.cta-btn--secondary:hover:not(:disabled) {
+  background-color: var(--color-brand-hover);
+}
+
+/* ── Disabled state ── */
+.cta-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ── Loading state ── */
+.cta-btn--loading {
+  opacity: 0.75;
+  cursor: wait;
+  pointer-events: none;
+}
+
+/* Spinner shown during loading */
+.cta-btn__spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: cta-spin 0.6s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes cta-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Stacked layout on narrow viewports ── */
+@media (max-width: 380px) {
+  .cta-buttons {
+    flex-direction: column;
+  }
+}

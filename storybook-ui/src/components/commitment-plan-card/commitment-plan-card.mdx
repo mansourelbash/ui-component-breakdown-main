@@ -1,0 +1,114 @@
+import { Meta, Canvas, Controls, ArgTypes } from '@storybook/blocks';
+import * as CommitmentStories from './commitment-plan-card.stories.js';
+
+<Meta of={CommitmentStories} />
+
+# CommitmentPlanCard
+
+A selectable card that displays the full pricing breakdown for a contract commitment period (e.g. 24 months or 12 months). Clicking a card triggers `plan:select` event. Wrap multiple cards in `.plan-cards` to get the flex layout.
+
+## Usage
+
+```html
+<link rel="stylesheet" href="tokens.css" />
+<link rel="stylesheet" href="commitment-plan-card.css" />
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="commitment-plan-card.js"></script>
+
+<div class="plan-cards">
+
+  <!-- 24-month card (selected) -->
+  <label class="plan-card plan-card--selected">
+    <input type="radio" name="commitment" value="24" class="plan-card__radio" checked hidden />
+    <div class="plan-card__header">
+      <span class="plan-card__radio-icon"></span>
+      <span class="plan-card__title">24 Months Commitment</span>
+    </div>
+    <div class="plan-card__row">
+      <span class="plan-card__key">First Month Payment</span>
+      <span class="plan-card__value plan-card__value--highlight">JD 20.42</span>
+    </div>
+    <p class="plan-card__sub">Including Tax</p>
+    <div class="plan-card__row"><span class="plan-card__key">Monthly Fees</span><span class="plan-card__value">JD 17.04</span></div>
+    <div class="plan-card__row"><span class="plan-card__key">Tax</span><span class="plan-card__value">JD 17.94</span></div>
+    <div class="plan-card__row"><span class="plan-card__key">SIM Card</span><span class="plan-card__value">JD 3.02</span></div>
+    <div class="plan-card__footer">
+      <span class="plan-card__key">Monthly Recurring Fees</span>
+      <div class="plan-card__price">JD 17.22<small>/month</small></div>
+    </div>
+  </label>
+
+  <!-- 12-month card -->
+  <label class="plan-card">
+    <input type="radio" name="commitment" value="12" class="plan-card__radio" hidden />
+    <div class="plan-card__header">
+      <span class="plan-card__radio-icon"></span>
+      <span class="plan-card__title">12 Months Commitment</span>
+    </div>
+    <div class="plan-card__row">
+      <span class="plan-card__key">First Month Payment</span>
+      <span class="plan-card__value plan-card__value--highlight">JD 13.50</span>
+    </div>
+    <p class="plan-card__sub">Including Tax</p>
+    <div class="plan-card__row"><span class="plan-card__key">Monthly Fees</span><span class="plan-card__value">JD 15.00</span></div>
+    <div class="plan-card__row"><span class="plan-card__key">Tax</span><span class="plan-card__value">JD 15.00</span></div>
+    <div class="plan-card__row"><span class="plan-card__key">SIM Card</span><span class="plan-card__value">JD 3.02</span></div>
+    <div class="plan-card__footer">
+      <span class="plan-card__key">Monthly Recurring Fees</span>
+      <div class="plan-card__price">JD 15.00<small>/month</small></div>
+    </div>
+  </label>
+
+</div>
+```
+
+### Listening to plan selection
+
+```js
+// jQuery custom event fired on the .plan-cards wrapper
+$('.plan-cards').on('plan:select', function (e, value) {
+  console.log('Selected commitment:', value); // "24" or "12"
+});
+```
+
+---
+
+## Default — 24 Months Selected
+
+<Canvas of={CommitmentStories.Selected24Months} />
+<Controls of={CommitmentStories.Selected24Months} />
+
+---
+
+## Variants
+
+### 12 Months Selected
+
+<Canvas of={CommitmentStories.Selected12Months} />
+
+### Both Cards Side-by-Side
+
+<Canvas of={CommitmentStories.NoneSelected} />
+
+### Single Card (no wrapper)
+
+<Canvas of={CommitmentStories.SingleCard} />
+
+---
+
+## ArgTypes
+
+<ArgTypes of={CommitmentStories} />
+
+---
+
+## Design Tokens Used
+
+| Token | Purpose |
+|---|---|
+| `--color-brand` | Selected border + header text + radio dot |
+| `--color-brand-light` | Selected card background tint |
+| `--color-border` | Unselected border |
+| `--shadow-sm` | Hover lift shadow |
+| `--radius-lg` | Card corner radius |
+| `--font-weight-bold` | Highlighted price values |

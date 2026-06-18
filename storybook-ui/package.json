@@ -1,0 +1,23 @@
+{
+  "name": "maak-storybook-ui",
+  "version": "1.0.0",
+  "description": "Ma'ak telecom component library — HTML/CSS/jQuery, documented with Storybook",
+  "private": true,
+  "scripts": {
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build -o storybook-static"
+  },
+  "dependencies": {
+    "jquery": "^3.7.1"
+  },
+  "devDependencies": {
+    "@storybook/addon-essentials": "^8.6.12",
+    "@storybook/html-webpack5": "^8.6.12",
+    "storybook": "^8.6.12",
+    "webpack": "^5.97.1",
+    "webpack-cli": "^5.1.4",
+    "css-loader": "^7.1.2",
+    "style-loader": "^4.0.0",
+    "html-loader": "^5.1.0"
+  }
+}

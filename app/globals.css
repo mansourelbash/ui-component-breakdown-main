@@ -1,0 +1,95 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: var(--font-geist-sans), 'Geist Fallback';
+  --font-mono: var(--font-geist-mono), 'Geist Mono Fallback';
+
+  /* Brand color palette — resolved as actual hex values */
+  --color-brand:            #F47920;
+  --color-brand-light:      #FFF5EC;
+  --color-brand-border:     #FFD9B3;
+  --color-neutral-900:      #1A1A1A;
+  --color-neutral-700:      #444444;
+  --color-neutral-500:      #888888;
+  --color-neutral-300:      #DDDDDD;
+  --color-neutral-100:      #F5F5F5;
+  --color-white:            #FFFFFF;
+
+  /* Semantic tokens — resolved to hex values directly */
+  --color-background:       #FFFFFF;
+  --color-foreground:       #1A1A1A;
+  --color-card:             #FFFFFF;
+  --color-card-foreground:  #1A1A1A;
+  --color-border:           #DDDDDD;
+  --color-input:            #DDDDDD;
+  --color-ring:             #F47920;
+  --color-primary:          #F47920;
+  --color-primary-foreground: #FFFFFF;
+  --color-secondary:        #F5F5F5;
+  --color-secondary-foreground: #444444;
+  --color-muted:            #F5F5F5;
+  --color-muted-foreground: #888888;
+  --color-accent:           #FFF5EC;
+  --color-accent-foreground: #444444;
+  --color-destructive:      oklch(0.577 0.245 27.325);
+  --color-popover:          #FFFFFF;
+  --color-popover-foreground: #1A1A1A;
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  color-scheme: light;
+  --background: #FFFFFF;
+  --foreground: #1A1A1A;
+  --card: #FFFFFF;
+  --card-foreground: #1A1A1A;
+  --popover: #FFFFFF;
+  --popover-foreground: #1A1A1A;
+  --primary: #F47920;
+  --primary-foreground: #FFFFFF;
+  --secondary: #F5F5F5;
+  --secondary-foreground: #444444;
+  --muted: #F5F5F5;
+  --muted-foreground: #888888;
+  --accent: #FFF5EC;
+  --accent-foreground: #444444;
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: #DDDDDD;
+  --input: #DDDDDD;
+  --ring: #F47920;
+  --radius: 0.625rem;
+
+  /* Component-level custom properties */
+  --color-brand: #F47920;
+  --color-brand-light: #FFF5EC;
+  --color-brand-border: #FFD9B3;
+  --color-neutral-900: #1A1A1A;
+  --color-neutral-700: #444444;
+  --color-neutral-500: #888888;
+  --color-neutral-300: #DDDDDD;
+  --color-neutral-100: #F5F5F5;
+  --color-white: #FFFFFF;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+}

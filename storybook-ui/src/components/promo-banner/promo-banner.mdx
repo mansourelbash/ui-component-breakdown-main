@@ -1,0 +1,82 @@
+import { Meta, Canvas, Controls, ArgTypes } from '@storybook/blocks';
+import * as PromoBannerStories from './promo-banner.stories';
+
+<Meta of={PromoBannerStories} />
+
+# PromoBanner
+
+An orange-tinted informational banner used to highlight promotional offers, exclusive pricing, or important notices. Sits at the top of a product detail page to draw attention before the user interacts with the plan options.
+
+**No JavaScript required** — this is a static HTML/CSS component.
+
+---
+
+## Usage in a plain HTML page
+
+```html
+<link rel="stylesheet" href="path/to/tokens.css" />
+<link rel="stylesheet" href="path/to/promo-banner.css" />
+
+<div class="promo-banner" role="note">
+  <span class="promo-banner__icon">
+    <!-- inline SVG tag icon -->
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+         stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
+      <line x1="7" y1="7" x2="7.01" y2="7"/>
+    </svg>
+  </span>
+  <span class="promo-banner__text">
+    Get Extra 25% GB exclusively from our eShop
+  </span>
+</div>
+```
+
+### Compact variant
+
+Add `.promo-banner--compact` for reduced padding and smaller text:
+
+```html
+<div class="promo-banner promo-banner--compact" role="note">
+  ...
+</div>
+```
+
+### Without icon
+
+Add `.promo-banner--no-icon` and omit the icon span:
+
+```html
+<div class="promo-banner promo-banner--no-icon" role="note">
+  <span class="promo-banner__text">Extra 25% GB on eShop orders</span>
+</div>
+```
+
+---
+
+## BEM classes reference
+
+| Class | Description |
+|---|---|
+| `.promo-banner` | Root wrapper |
+| `.promo-banner--compact` | Reduced padding and font size |
+| `.promo-banner--no-icon` | Removes left padding reserved for icon |
+| `.promo-banner__icon` | SVG icon container |
+| `.promo-banner__text` | Message text |
+
+---
+
+## Default
+
+<Canvas of={PromoBannerStories.Default} />
+<Controls of={PromoBannerStories.Default} />
+
+## Variants
+
+<Canvas of={PromoBannerStories.LongMessage} />
+<Canvas of={PromoBannerStories.Compact} />
+<Canvas of={PromoBannerStories.NoIcon} />
+
+## Argument reference
+
+<ArgTypes of={PromoBannerStories} />

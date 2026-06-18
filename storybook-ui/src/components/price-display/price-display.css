@@ -1,0 +1,60 @@
+/* ─── PriceDisplay ───────────────────────────────────────────────────── */
+
+.price-display {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-1);
+  flex-wrap: wrap;
+}
+
+/* Default: right-aligned totals row */
+.price-display--right {
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.price-display--left {
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.price-display__currency {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  /* Sits slightly above the baseline */
+  vertical-align: super;
+  line-height: 1;
+  align-self: flex-start;
+  margin-top: 4px;
+}
+
+.price-display__amount {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  line-height: var(--line-height-tight);
+}
+
+/* "Including Tax" note — full-width below the amount */
+.price-display__note {
+  display: block;
+  width: 100%;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  margin-top: 2px;
+}
+
+/* ── Size modifier: large ── */
+.price-display--large .price-display__amount {
+  font-size: 40px;
+}
+
+/* ── Size modifier: small (inside plan cards) ── */
+.price-display--small .price-display__amount {
+  font-size: var(--font-size-2xl);
+}
+
+.price-display--small .price-display__currency {
+  font-size: var(--font-size-sm);
+}

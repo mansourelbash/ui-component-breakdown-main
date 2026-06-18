@@ -1,0 +1,59 @@
+/* ─── FreeAddOns ─────────────────────────────────────────────────────── */
+
+.addons {
+  /* wrapper */
+}
+
+.addons__title {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-label);
+  margin-bottom: var(--space-4);
+}
+
+.addons__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* ─── Individual add-on item ─────────────────────────────────────────── */
+
+.addon-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.addon-item__logo-wrap {
+  display: flex;
+  align-items: center;
+  min-height: 28px;
+}
+
+.addon-item__logo {
+  max-height: 28px;
+  width: auto;
+  object-fit: contain;
+  object-position: left center;
+}
+
+/* Fallback text badge when no logo image is available */
+.addon-item__logo-text {
+  display: inline-block;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-brand);
+  letter-spacing: 0.03em;
+}
+
+.addon-item__description {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-loose);
+}

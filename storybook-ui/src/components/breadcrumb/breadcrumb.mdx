@@ -1,0 +1,64 @@
+import { Meta, Canvas, Controls, ArgTypes } from '@storybook/blocks';
+import * as BreadcrumbStories from './breadcrumb.stories';
+
+<Meta of={BreadcrumbStories} />
+
+# Breadcrumb
+
+The Breadcrumb component renders a navigational path showing the user's current location within the site hierarchy. The last item is always treated as the current page (rendered as plain text with no link). All preceding items render as `<a>` links separated by `›` chevrons generated purely in CSS.
+
+**No JavaScript required** — this is a static HTML/CSS component.
+
+---
+
+## Usage in a plain HTML page
+
+```html
+<!-- 1. Load tokens + component styles -->
+<link rel="stylesheet" href="path/to/tokens.css" />
+<link rel="stylesheet" href="path/to/breadcrumb.css" />
+
+<!-- 2. Drop in the markup -->
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <ol class="breadcrumb__list">
+    <li class="breadcrumb__item">
+      <a href="/personal" class="breadcrumb__link">Personal</a>
+    </li>
+    <li class="breadcrumb__item">
+      <a href="/personal/mobile-plans" class="breadcrumb__link">Mobile Line Plans</a>
+    </li>
+    <li class="breadcrumb__item breadcrumb__item--active" aria-current="page">
+      Ma&apos;ak 80
+    </li>
+  </ol>
+</nav>
+```
+
+---
+
+## BEM classes reference
+
+| Class | Description |
+|---|---|
+| `.breadcrumb` | Root `<nav>` wrapper |
+| `.breadcrumb__list` | `<ol>` containing all items |
+| `.breadcrumb__item` | Each `<li>` step |
+| `.breadcrumb__item--active` | Applied to the last item (current page, no link) |
+| `.breadcrumb__link` | `<a>` tag inside non-active items |
+
+---
+
+## Default
+
+<Canvas of={BreadcrumbStories.Default} />
+<Controls of={BreadcrumbStories.Default} />
+
+## Variants
+
+<Canvas of={BreadcrumbStories.SingleItem} />
+<Canvas of={BreadcrumbStories.TwoLevels} />
+<Canvas of={BreadcrumbStories.LongPath} />
+
+## Argument reference
+
+<ArgTypes of={BreadcrumbStories} />

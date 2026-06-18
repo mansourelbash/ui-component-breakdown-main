@@ -1,0 +1,76 @@
+import { Meta, Canvas, Controls, ArgTypes } from '@storybook/blocks';
+import * as FreeAddOnsStories from './free-addons.stories';
+
+<Meta of={FreeAddOnsStories} />
+
+# FreeAddOns
+
+Displays a list of bundled streaming and entertainment services included with a mobile plan. Each add-on shows an optional logo image and a short description. When no logo URL is provided, the service name is rendered as a styled text badge.
+
+**No JavaScript required** — this is a static HTML/CSS component.
+
+---
+
+## Usage in a plain HTML page
+
+```html
+<link rel="stylesheet" href="path/to/tokens.css" />
+<link rel="stylesheet" href="path/to/free-addons.css" />
+
+<div class="addons">
+  <h3 class="addons__title">Free Add-Ons</h3>
+  <ul class="addons__list" role="list">
+
+    <li class="addon-item">
+      <div class="addon-item__logo-wrap">
+        <img src="/logos/tod.svg" alt="TOD logo" class="addon-item__logo" />
+      </div>
+      <p class="addon-item__description">
+        Watch the top leagues, tournaments, series and movies with TOD.
+      </p>
+    </li>
+
+    <li class="addon-item">
+      <div class="addon-item__logo-wrap">
+        <!-- Text fallback when no logo is available -->
+        <span class="addon-item__logo-text">OSN+</span>
+      </div>
+      <p class="addon-item__description">
+        Catch the latest blockbusters and exclusive series with OSN+.
+      </p>
+    </li>
+
+  </ul>
+</div>
+```
+
+---
+
+## BEM classes reference
+
+| Class | Description |
+|---|---|
+| `.addons` | Root wrapper |
+| `.addons__title` | Uppercase section heading |
+| `.addons__list` | `<ul>` containing add-on items |
+| `.addon-item` | Each `<li>` add-on entry |
+| `.addon-item__logo-wrap` | Constrains logo height |
+| `.addon-item__logo` | `<img>` logo (max-height 28px) |
+| `.addon-item__logo-text` | Text badge fallback when no logo is available |
+| `.addon-item__description` | Short service description |
+
+---
+
+## Default
+
+<Canvas of={FreeAddOnsStories.Default} />
+<Controls of={FreeAddOnsStories.Default} />
+
+## Variants
+
+<Canvas of={FreeAddOnsStories.SingleAddon} />
+<Canvas of={FreeAddOnsStories.TextFallback} />
+
+## Argument reference
+
+<ArgTypes of={FreeAddOnsStories} />

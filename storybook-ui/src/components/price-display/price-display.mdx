@@ -1,0 +1,69 @@
+import { Meta, Canvas, Controls, ArgTypes, Story } from '@storybook/blocks';
+import * as PriceDisplayStories from './price-display.stories.js';
+
+<Meta of={PriceDisplayStories} />
+
+# PriceDisplay
+
+Renders a formatted price with currency symbol, amount, and a small note beneath (e.g. "Including Tax"). Used in the product detail page to display the running cart total.
+
+## Usage
+
+```html
+<link rel="stylesheet" href="tokens.css" />
+<link rel="stylesheet" href="price-display.css" />
+
+<div class="price-display">
+  <span class="price-display__currency">JD</span>
+  <span class="price-display__amount">85.96</span>
+  <span class="price-display__note">Including Tax</span>
+</div>
+```
+
+No JavaScript is required — this is a purely presentational component.
+
+---
+
+## Default
+
+<Canvas of={PriceDisplayStories.Default} />
+<Controls of={PriceDisplayStories.Default} />
+
+---
+
+## Variants
+
+### Large Amount
+
+<Canvas of={PriceDisplayStories.LargeAmount} />
+
+### Small Amount (cents only)
+
+<Canvas of={PriceDisplayStories.SmallAmount} />
+
+### No Note
+
+<Canvas of={PriceDisplayStories.NoNote} />
+
+### Right-Aligned (cart context)
+
+<Canvas of={PriceDisplayStories.Default} />
+
+---
+
+## ArgTypes
+
+<ArgTypes of={PriceDisplayStories} />
+
+---
+
+## Design Tokens Used
+
+| Token | Purpose |
+|---|---|
+| `--color-neutral-900` | Amount text colour |
+| `--color-text-secondary` | Note text colour |
+| `--color-brand` | Currency symbol accent colour |
+| `--font-size-3xl` | Large amount number |
+| `--font-size-sm` | Note text |
+| `--font-weight-bold` | Amount weight |

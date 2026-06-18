@@ -1,0 +1,83 @@
+import { Meta, Canvas, Controls, ArgTypes, Story } from '@storybook/blocks';
+import * as NumberSelectorStories from './number-selector.stories.js';
+
+<Meta of={NumberSelectorStories} />
+
+# NumberSelector
+
+A styled native `<select>` dropdown that lets the user pick a phone number from a list of available options. The required asterisk is displayed in brand orange.
+
+## Usage
+
+```html
+<link rel="stylesheet" href="tokens.css" />
+<link rel="stylesheet" href="number-selector.css" />
+
+<div class="number-selector">
+  <label class="number-selector__label" for="numberSelect">
+    Select Number <span class="number-selector__required" aria-hidden="true">*</span>
+  </label>
+  <div class="number-selector__control">
+    <select class="number-selector__select" id="numberSelect" aria-required="true">
+      <option value="">Choose a number…</option>
+      <option value="776295799">+962 776295799</option>
+      <option value="778123456">+962 778123456</option>
+    </select>
+    <span class="number-selector__arrow" aria-hidden="true">▾</span>
+  </div>
+</div>
+```
+
+No JavaScript is required. Listen to the `change` event on the `<select>` natively:
+
+```js
+document.getElementById('numberSelect').addEventListener('change', function () {
+  console.log('Selected:', this.value);
+});
+
+// Or with jQuery
+$('#numberSelect').on('change', function () {
+  console.log('Selected:', $(this).val());
+});
+```
+
+---
+
+## Default
+
+<Canvas of={NumberSelectorStories.Default} />
+<Controls of={NumberSelectorStories.Default} />
+
+---
+
+## Variants
+
+### With Pre-selected Value
+
+<Canvas of={NumberSelectorStories.Default} />
+
+### Many Options
+
+<Canvas of={NumberSelectorStories.ManyOptions} />
+
+### Disabled
+
+<Canvas of={NumberSelectorStories.Disabled} />
+
+---
+
+## ArgTypes
+
+<ArgTypes of={NumberSelectorStories} />
+
+---
+
+## Design Tokens Used
+
+| Token | Purpose |
+|---|---|
+| `--color-border` | Select border colour |
+| `--color-brand` | Required asterisk + focus ring |
+| `--color-text-primary` | Selected value text |
+| `--radius-md` | Select border radius |
+| `--font-size-base` | Option text size |

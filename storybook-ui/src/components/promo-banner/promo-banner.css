@@ -1,0 +1,43 @@
+/* ─── PromoBanner ────────────────────────────────────────────────────── */
+
+.promo-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  background-color: var(--color-brand-light);
+  border: 1px solid var(--color-brand-border);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-base);
+  color: var(--color-text-primary);
+  line-height: var(--line-height-base);
+}
+
+.promo-banner__icon {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  margin-top: 1px;
+  color: var(--color-brand);
+}
+
+/* SVG inside the icon slot */
+.promo-banner__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.promo-banner__text {
+  flex: 1;
+}
+
+/* ── Modifier: compact ── */
+.promo-banner--compact {
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--font-size-sm);
+}
+
+/* ── Modifier: no-icon ── */
+.promo-banner--no-icon {
+  padding-left: var(--space-4);
+}
